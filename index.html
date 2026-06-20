@@ -9,12 +9,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@600;800&display=swap" rel="stylesheet" />
 
   <style>
-    /* ── RESET & BASE ─────────────────────────────────────── */
+    /* ── RESET ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Inter', sans-serif;
-      font-size: 16.5px;
+      font-size: 16px;
       line-height: 1.78;
       color: #1A1208;
       background: #FAF7F2;
@@ -23,15 +23,13 @@
     img { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
 
-    /* ── TOKENS ───────────────────────────────────────────── */
+    /* ── TOKENS ── */
     :root {
       --espresso:        #201208;
       --umber:           #3A1F0C;
       --amber:           #C47D1E;
       --amber-hover:     #A8670F;
-      --amber-soft:      #F5EAD8;
       --terracotta:      #8B3A2A;
-      --tan:             #A67C52;
       --text-primary:    #1A1208;
       --text-secondary:  #5A4030;
       --text-dark:       #FFFFFF;
@@ -42,162 +40,163 @@
       --bg-callout:      #FDF4E7;
       --border-light:    #E0D4C0;
       --max-w:           1160px;
-      --section-py:      96px;
-      --section-py-mob:  56px;
     }
 
-    /* ── TYPOGRAPHY ───────────────────────────────────────── */
-    .t-heading { font-family: 'Montserrat', sans-serif; font-weight: 800; line-height: 1.18; }
-    .t-sub     { font-family: 'Montserrat', sans-serif; font-weight: 600; line-height: 1.3; }
-    .t-body    { font-family: 'Inter', sans-serif; font-weight: 400; line-height: 1.78; }
-    .t-accent  { font-family: 'Inter', sans-serif; font-weight: 600; }
-
-    /* ── CONTAINER ────────────────────────────────────────── */
+    /* ── CONTAINER ── */
     .container {
       max-width: var(--max-w);
       margin: 0 auto;
       padding: 0 40px;
     }
-    @media (max-width: 768px) {
-      .container { padding: 0 20px; }
-    }
+    @media (max-width: 768px) { .container { padding: 0 20px; } }
 
-    /* ── SECTION BASE ─────────────────────────────────────── */
-    .section { padding: var(--section-py) 0; }
-    @media (max-width: 768px) {
-      .section { padding: var(--section-py-mob) 0; }
-    }
+    /* ── SECTION ── */
+    .section { padding: 88px 0; }
+    @media (max-width: 768px) { .section { padding: 52px 0; } }
 
-    /* ── BUTTON ───────────────────────────────────────────── */
+    /* ── BUTTON ── */
     .btn-cta {
       display: inline-block;
       background: var(--amber);
       color: #fff;
       font-family: 'Montserrat', sans-serif;
       font-weight: 800;
-      font-size: 17px;
-      padding: 18px 36px;
+      font-size: 16px;
+      padding: 18px 34px;
       border-radius: 8px;
       border: none;
       cursor: pointer;
       text-align: center;
-      transition: background .2s ease, transform .15s ease, box-shadow .2s ease;
-      letter-spacing: 0.01em;
+      transition: background .2s, transform .15s, box-shadow .2s;
+      letter-spacing: .01em;
     }
     .btn-cta:hover {
       background: var(--amber-hover);
       transform: translateY(-2px);
       box-shadow: 0 8px 28px rgba(196,125,30,.42);
     }
-    .btn-cta.btn-full { width: 100%; }
+    .btn-cta.full { width: 100%; display: block; }
 
-    /* ── REVEAL ANIMATION ─────────────────────────────────── */
+    /* ── REVEAL ── */
     .reveal {
       opacity: 0;
-      transform: translateY(24px);
-      transition: opacity .55s ease, transform .55s ease;
+      transform: translateY(22px);
+      transition: opacity .5s ease, transform .5s ease;
     }
     .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-d1 { transition-delay: .1s; }
-    .reveal-d2 { transition-delay: .2s; }
-    .reveal-d3 { transition-delay: .3s; }
+    .d1 { transition-delay: .1s; }
+    .d2 { transition-delay: .2s; }
+    .d3 { transition-delay: .3s; }
 
-    /* ────────────────────────────────────────────────────────
+    /* ── DIVIDER ── */
+    .divider {
+      width: 44px; height: 3px;
+      background: var(--amber);
+      border-radius: 2px;
+      margin-bottom: 20px;
+    }
+    .divider.center { margin: 0 auto 20px; }
+
+    /* ── SECTION LABEL ── */
+    .label {
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 12px;
+    }
+
+    /* ────────────────────────────────────────────────────
        01. HERO
-    ──────────────────────────────────────────────────────── */
+    ──────────────────────────────────────────────────── */
     .hero {
       background: var(--espresso);
-      min-height: 92vh;
       display: grid;
       grid-template-columns: 48% 52%;
-      align-items: stretch;
+      min-height: 92vh;
     }
-    /* TEXT COLUMN */
+
     .hero-text {
       display: flex;
       flex-direction: column;
       justify-content: center;
       padding: 80px 52px 80px 60px;
-      gap: 24px;
+      gap: 22px;
     }
     .hero-eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(196,125,30,.15);
-      border: 1px solid rgba(196,125,30,.35);
+      background: rgba(196,125,30,.14);
+      border: 1px solid rgba(196,125,30,.32);
       color: var(--amber);
-      font-family: 'Inter', sans-serif;
+      font-size: 12px;
       font-weight: 600;
-      font-size: 12.5px;
       letter-spacing: .08em;
       text-transform: uppercase;
       padding: 6px 14px;
       border-radius: 4px;
       width: fit-content;
     }
-    .hero-headline {
+    .hero-h1 {
       font-family: 'Montserrat', sans-serif;
       font-weight: 800;
-      font-size: 46px;
-      line-height: 1.15;
+      font-size: 34px;
+      line-height: 1.18;
       color: #fff;
     }
-    .hero-headline .accent { color: var(--amber); }
+    .hero-h1 .amber { color: var(--amber); }
     .hero-sub {
-      font-size: 17px;
+      font-size: 16px;
       line-height: 1.7;
       color: var(--text-dark-muted);
     }
     .hero-risk {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px 20px;
-      margin-top: 4px;
+      gap: 10px 18px;
     }
     .hero-risk span {
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
       font-size: 13px;
+      font-weight: 600;
       color: var(--text-dark-muted);
     }
     .hero-risk span::before { content: '✓ '; color: var(--amber); }
 
-    /* IMAGE COLUMN — desktop */
-    .hero-image-col {
+    .hero-img-col {
       position: relative;
       overflow: hidden;
     }
-    .hero-image-col img {
+    .hero-img-col img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center top;
-      border-radius: 16px 0 0 16px;
+      border-radius: 14px 0 0 14px;
     }
 
-    /* MOBILE HERO — stack: headline → image → sub → cta */
+    /* Mobile hero: headline → image → sub → cta */
     @media (max-width: 768px) {
       .hero {
         display: flex;
         flex-direction: column;
         min-height: unset;
         padding: 44px 20px 52px;
-        gap: 0;
       }
       .hero-text {
         padding: 0;
         gap: 0;
-        order: 1; /* headline goes first */
+        order: 1;
       }
-      .hero-eyebrow { margin-bottom: 16px; }
-      .hero-headline { font-size: 30px; margin-bottom: 24px; }
-      /* sub and cta moved after image via order */
-      .hero-sub { display: none; } /* hidden here, shown in hero-bottom */
-      .hero-cta-wrap { display: none; }
-      .hero-risk { display: none; }
+      .hero-eyebrow  { margin-bottom: 16px; }
+      .hero-h1       { font-size: 24px; margin-bottom: 24px; }
+      /* hide desktop sub/cta/risk in text block */
+      .hero-text .hero-sub,
+      .hero-text .hero-cta-wrap,
+      .hero-text .hero-risk { display: none; }
 
-      .hero-image-col {
+      .hero-img-col {
         order: 2;
         width: 100%;
         aspect-ratio: 4/5;
@@ -205,36 +204,34 @@
         margin: 0 0 28px;
         overflow: hidden;
       }
-      .hero-image-col img { border-radius: 12px; }
+      .hero-img-col img { border-radius: 12px; }
 
-      .hero-bottom {
+      .hero-mob-bottom {
         order: 3;
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 18px;
       }
-      .hero-bottom .hero-sub {
-        display: block;
-        font-size: 15.5px;
+      .hero-mob-bottom .hero-sub {
+        font-size: 15px;
         color: var(--text-dark-muted);
       }
-      .hero-bottom .btn-cta { width: 100%; }
-      .hero-bottom .hero-risk {
+      .hero-mob-bottom .hero-risk {
         display: flex;
         flex-direction: column;
         gap: 6px;
       }
     }
     @media (min-width: 769px) {
-      .hero-bottom { display: none; } /* desktop: content in hero-text */
+      .hero-mob-bottom { display: none; }
     }
 
-    /* ────────────────────────────────────────────────────────
+    /* ────────────────────────────────────────────────────
        02. AGITASI
-    ──────────────────────────────────────────────────────── */
+    ──────────────────────────────────────────────────── */
     .agitasi {
       background: var(--umber);
-      padding: var(--section-py) 0;
+      padding: 88px 0;
     }
     .agitasi-inner {
       max-width: var(--max-w);
@@ -245,150 +242,91 @@
       gap: 64px;
       align-items: center;
     }
-    .agitasi-headline {
+    .agitasi-h2 {
       font-family: 'Montserrat', sans-serif;
       font-weight: 800;
-      font-size: 36px;
-      line-height: 1.2;
+      font-size: 30px;
+      line-height: 1.22;
       color: #fff;
       margin-bottom: 28px;
     }
     .agitasi-body p {
-      font-size: 16.5px;
+      font-size: 16px;
       color: var(--text-dark-muted);
-      margin-bottom: 18px;
+      margin-bottom: 16px;
+      line-height: 1.78;
     }
     .agitasi-body p strong { color: #fff; font-weight: 600; }
+    .agitasi-body p:last-child { margin-bottom: 0; }
     .agitasi-image {
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 20px 60px rgba(0,0,0,.4);
     }
     .agitasi-image img {
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       object-fit: cover;
       display: block;
-      filter: brightness(.92);
+      filter: brightness(.88);
     }
     @media (max-width: 768px) {
-      .agitasi { padding: var(--section-py-mob) 0; }
+      .agitasi { padding: 52px 0; }
       .agitasi-inner {
-        display: flex;
-        flex-direction: column;
-        padding: 0 20px;
-        gap: 32px;
+        display: flex; flex-direction: column;
+        padding: 0 20px; gap: 32px;
       }
-      .agitasi-headline { font-size: 24px; }
-      .agitasi-image { width: 100%; }
+      .agitasi-h2 { font-size: 21px; }
     }
 
-    /* ────────────────────────────────────────────────────────
-       SOCIAL PROOF (shared)
-    ──────────────────────────────────────────────────────── */
-    .proof-section { background: var(--bg-cream); }
-    .proof-card {
-      background: var(--bg-linen);
-      border-radius: 12px;
-      padding: 36px 40px;
-      border-left: 4px solid var(--amber);
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .proof-name {
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      font-size: 13px;
-      letter-spacing: .07em;
-      text-transform: uppercase;
-      color: var(--amber);
-      margin-bottom: 6px;
-    }
-    .proof-section-title {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 800;
-      font-size: 22px;
-      line-height: 1.25;
-      color: var(--text-primary);
-      margin-bottom: 20px;
-    }
-    .proof-body {
-      font-size: 16px;
-      color: var(--text-secondary);
-      line-height: 1.8;
-      font-style: italic;
-    }
-    .proof-body::before { content: '"'; font-size: 28px; color: var(--amber); line-height: 0; vertical-align: -8px; margin-right: 4px; }
-    .proof-body::after  { content: '"'; font-size: 28px; color: var(--amber); line-height: 0; vertical-align: -8px; margin-left: 4px; }
-    @media (max-width: 768px) {
-      .proof-card { padding: 28px 24px; }
-      .proof-section-title { font-size: 19px; }
-    }
-
-    /* ────────────────────────────────────────────────────────
-       04. FOR WHO
-    ──────────────────────────────────────────────────────── */
+    /* ────────────────────────────────────────────────────
+       03. FOR WHO
+    ──────────────────────────────────────────────────── */
     .forwho { background: var(--bg-linen); }
-    .section-label {
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      font-size: 12px;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--amber);
-      margin-bottom: 12px;
-    }
-    .section-headline {
+    .section-h2 {
       font-family: 'Montserrat', sans-serif;
       font-weight: 800;
-      font-size: 36px;
-      line-height: 1.2;
+      font-size: 30px;
+      line-height: 1.22;
       color: var(--text-primary);
-      margin-bottom: 40px;
+      margin-bottom: 36px;
     }
+    @media (max-width: 768px) { .section-h2 { font-size: 21px; margin-bottom: 24px; } }
+
     .forwho-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      max-width: 720px;
+      gap: 12px;
+      max-width: 740px;
     }
     .forwho-list li {
       display: flex;
       align-items: flex-start;
-      gap: 16px;
+      gap: 14px;
       background: var(--bg-cream);
       border-radius: 10px;
-      padding: 18px 22px;
-      font-size: 16px;
+      padding: 16px 20px;
+      font-size: 15.5px;
       color: var(--text-primary);
-      line-height: 1.6;
+      line-height: 1.62;
     }
-    .forwho-list li .check {
+    .forwho-list .arrow {
       color: var(--amber);
-      font-size: 20px;
+      font-size: 18px;
       flex-shrink: 0;
       margin-top: 1px;
-    }
-    @media (max-width: 768px) {
-      .section-headline { font-size: 24px; margin-bottom: 28px; }
-      .forwho-list li { padding: 14px 16px; font-size: 15px; }
+      font-weight: 600;
     }
 
-    /* ────────────────────────────────────────────────────────
-       05. VALUE STACK
-    ──────────────────────────────────────────────────────── */
-    .value-stack {
-      background: var(--espresso);
-      padding: var(--section-py) 0;
-    }
-    .value-stack .section-headline { color: #fff; margin-bottom: 12px; }
-    .value-stack .section-label { margin-bottom: 12px; }
+    /* ────────────────────────────────────────────────────
+       04. VALUE STACK
+    ──────────────────────────────────────────────────── */
+    .value { background: var(--espresso); }
+    .value .section-h2 { color: #fff; }
     .value-sub {
-      font-size: 16px;
+      font-size: 15.5px;
       color: var(--text-dark-muted);
-      margin-bottom: 52px;
-      max-width: 600px;
+      margin-bottom: 44px;
     }
     .value-grid {
       display: grid;
@@ -396,180 +334,231 @@
       gap: 24px;
       align-items: start;
     }
-    /* Main product card — spans full left col */
+
     .product-main {
       background: rgba(255,255,255,.06);
-      border: 1px solid rgba(196,125,30,.3);
+      border: 1px solid rgba(196,125,30,.28);
       border-radius: 16px;
       overflow: hidden;
     }
-    .product-main-img {
+    .product-main img.cover {
       width: 100%;
       aspect-ratio: 4/3;
       object-fit: cover;
-      object-position: center;
     }
-    .product-main-body { padding: 28px; }
-    .product-main-tag {
+    .product-main-body { padding: 26px; }
+    .product-tag {
       display: inline-block;
       background: var(--amber);
       color: #fff;
       font-family: 'Montserrat', sans-serif;
       font-weight: 800;
-      font-size: 11px;
+      font-size: 10.5px;
       letter-spacing: .1em;
       text-transform: uppercase;
-      padding: 5px 12px;
+      padding: 4px 12px;
       border-radius: 4px;
-      margin-bottom: 14px;
-    }
-    .product-main-title {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 800;
-      font-size: 22px;
-      color: #fff;
-      line-height: 1.25;
       margin-bottom: 12px;
     }
-    .product-main-desc {
-      font-size: 14.5px;
+    .product-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 19px;
+      color: #fff;
+      line-height: 1.28;
+      margin-bottom: 10px;
+    }
+    .product-desc {
+      font-size: 14px;
       color: var(--text-dark-muted);
       line-height: 1.7;
     }
 
-    /* Bonus cards — right col, stacked */
     .bonus-stack {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 14px;
     }
     .bonus-card {
       background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.09);
       border-radius: 12px;
-      padding: 20px 22px;
+      padding: 18px 20px;
       display: flex;
-      align-items: center;
-      gap: 16px;
+      align-items: flex-start;
+      gap: 14px;
     }
     .bonus-num {
       background: var(--amber);
       color: #fff;
       font-family: 'Montserrat', sans-serif;
       font-weight: 800;
-      font-size: 13px;
-      width: 36px; height: 36px;
-      border-radius: 8px;
+      font-size: 12px;
+      min-width: 34px; height: 34px;
+      border-radius: 7px;
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
+      margin-top: 1px;
     }
-    .bonus-info { flex: 1; }
     .bonus-title {
       font-family: 'Montserrat', sans-serif;
       font-weight: 800;
-      font-size: 14px;
+      font-size: 13.5px;
       color: #fff;
       margin-bottom: 4px;
+      line-height: 1.3;
     }
-    .bonus-desc { font-size: 13px; color: var(--text-dark-muted); line-height: 1.55; }
+    .bonus-desc { font-size: 12.5px; color: var(--text-dark-muted); line-height: 1.58; }
+
+    .value-cta-box {
+      margin-top: 10px;
+      background: rgba(196,125,30,.12);
+      border: 1px solid rgba(196,125,30,.24);
+      border-radius: 12px;
+      padding: 22px;
+      text-align: center;
+    }
+    .value-cta-box .sub  { font-size: 13px; color: var(--text-dark-muted); margin-bottom: 6px; }
+    .value-cta-box .price { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 30px; color: var(--amber); }
+    .value-cta-box .strike { font-size: 13px; color: #888; text-decoration: line-through; margin-bottom: 14px; }
 
     @media (max-width: 768px) {
-      .value-stack { padding: var(--section-py-mob) 0; }
       .value-grid { grid-template-columns: 1fr; }
-      .value-sub { margin-bottom: 32px; }
-      .product-main-body { padding: 20px; }
-      .product-main-title { font-size: 19px; }
+      .value-sub { margin-bottom: 28px; }
     }
 
-    /* ────────────────────────────────────────────────────────
-       07. HOW IT WORKS
-    ──────────────────────────────────────────────────────── */
+    /* ────────────────────────────────────────────────────
+       05. HOW IT WORKS
+    ──────────────────────────────────────────────────── */
     .hiw { background: var(--bg-linen); }
     .hiw-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-      margin-top: 12px;
+      gap: 24px;
+      margin-top: 8px;
     }
-    .fase-card {
+    .fase {
       background: var(--bg-cream);
       border-radius: 14px;
-      padding: 32px 28px;
-      position: relative;
+      padding: 30px 26px;
     }
     .fase-num {
       font-family: 'Montserrat', sans-serif;
       font-weight: 800;
-      font-size: 48px;
-      color: rgba(196,125,30,.18);
+      font-size: 42px;
+      color: rgba(196,125,30,.16);
       line-height: 1;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
-    .fase-tag {
+    .fase-badge {
       display: inline-block;
       background: var(--amber);
       color: #fff;
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
       font-size: 11px;
-      letter-spacing: .07em;
+      font-weight: 600;
+      letter-spacing: .06em;
       text-transform: uppercase;
-      padding: 4px 10px;
+      padding: 3px 10px;
       border-radius: 4px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
     .fase-title {
       font-family: 'Montserrat', sans-serif;
       font-weight: 800;
-      font-size: 18px;
+      font-size: 17px;
       color: var(--text-primary);
-      margin-bottom: 12px;
       line-height: 1.3;
+      margin-bottom: 10px;
     }
-    .fase-title em {
-      font-style: normal;
-      color: var(--terracotta);
-    }
-    .fase-desc { font-size: 14.5px; color: var(--text-secondary); line-height: 1.72; }
+    .fase-title em { font-style: normal; color: var(--terracotta); }
+    .fase-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.72; }
     .fase-win {
-      margin-top: 16px;
-      padding-top: 16px;
+      margin-top: 14px;
+      padding-top: 14px;
       border-top: 1px solid var(--border-light);
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 600;
       color: var(--amber);
     }
     @media (max-width: 768px) {
-      .hiw-grid { grid-template-columns: 1fr; gap: 16px; }
-      .fase-card { padding: 24px 20px; }
-      .fase-num { font-size: 36px; }
+      .hiw-grid { grid-template-columns: 1fr; gap: 14px; }
+      .fase { padding: 22px 18px; }
+      .fase-num { font-size: 34px; }
     }
 
-    /* ────────────────────────────────────────────────────────
-       09. PRICING
-    ──────────────────────────────────────────────────────── */
+    /* ────────────────────────────────────────────────────
+       06. SOCIAL PROOF BLOCK (all 3 together)
+    ──────────────────────────────────────────────────── */
+    .proofs { background: var(--bg-cream); }
+    .proofs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .proof-card {
+      background: var(--bg-linen);
+      border-radius: 12px;
+      padding: 28px 24px;
+      border-top: 3px solid var(--amber);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .proof-name {
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+    .proof-headline {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 15.5px;
+      color: var(--text-primary);
+      line-height: 1.35;
+    }
+    .proof-body {
+      font-size: 14.5px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      font-style: italic;
+    }
+    .proof-quote-mark {
+      font-size: 36px;
+      color: var(--amber);
+      opacity: .45;
+      line-height: .8;
+      margin-bottom: 4px;
+    }
+    @media (max-width: 768px) {
+      .proofs-grid { grid-template-columns: 1fr; gap: 14px; }
+    }
+
+    /* ────────────────────────────────────────────────────
+       07. PRICING
+    ──────────────────────────────────────────────────── */
     .pricing { background: var(--bg-cream); }
     .pricing-box {
-      max-width: 640px;
+      max-width: 620px;
       margin: 0 auto;
       text-align: center;
     }
-    .pricing-headline {
+    .pricing-h2 {
       font-family: 'Montserrat', sans-serif;
       font-weight: 800;
-      font-size: 34px;
-      line-height: 1.2;
+      font-size: 30px;
+      line-height: 1.22;
       color: var(--text-primary);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
     .pricing-sub {
-      font-size: 16px;
+      font-size: 15.5px;
       color: var(--text-secondary);
-      margin-bottom: 40px;
+      margin-bottom: 36px;
     }
-    .price-block { margin-bottom: 28px; }
     .price-strike {
-      font-size: 20px;
+      font-size: 18px;
       color: #AAAAAA;
       text-decoration: line-through;
       margin-bottom: 6px;
@@ -577,44 +566,40 @@
     .price-active {
       font-family: 'Montserrat', sans-serif;
       font-weight: 800;
-      font-size: 58px;
+      font-size: 56px;
       color: var(--amber);
       line-height: 1;
-      animation: pricePop .4s ease forwards;
+      margin-bottom: 28px;
     }
-    .price-active span { font-size: 28px; vertical-align: super; }
-    @keyframes pricePop {
-      from { transform: scale(.92); opacity: 0; }
-      to   { transform: scale(1);   opacity: 1; }
-    }
-    .risk-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 24px;
-      text-align: left;
+    .price-active span { font-size: 26px; vertical-align: super; }
+    .risk-box {
       background: var(--bg-callout);
       border-radius: 10px;
-      padding: 24px 28px;
+      padding: 22px 26px;
+      text-align: left;
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
     }
-    .risk-list p {
-      font-size: 14.5px;
+    .risk-box p {
+      font-size: 14px;
       font-weight: 600;
       color: var(--text-secondary);
     }
-    .risk-list p::before { content: '✓ '; color: var(--amber); }
+    .risk-box p::before { content: '✓ '; color: var(--amber); }
     @media (max-width: 768px) {
-      .pricing-headline { font-size: 24px; }
-      .price-active { font-size: 46px; }
-      .risk-list { padding: 18px 20px; }
+      .pricing-h2 { font-size: 21px; }
+      .price-active { font-size: 44px; }
+      .risk-box { padding: 18px 18px; }
     }
 
-    /* ────────────────────────────────────────────────────────
-       10. CLOSING
-    ──────────────────────────────────────────────────────── */
+    /* ────────────────────────────────────────────────────
+       08. CLOSING
+    ──────────────────────────────────────────────────── */
     .closing {
       background: var(--umber);
-      padding: var(--section-py) 0;
+      padding: 88px 0;
     }
     .closing-inner {
       max-width: var(--max-w);
@@ -626,49 +611,43 @@
       align-items: center;
     }
     .closing-image {
-      border-radius: 16px;
+      border-radius: 14px;
       overflow: hidden;
       box-shadow: 0 24px 64px rgba(0,0,0,.45);
     }
     .closing-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .closing-text { display: flex; flex-direction: column; gap: 24px; }
-    .closing-headline {
+    .closing-text { display: flex; flex-direction: column; gap: 22px; }
+    .closing-h2 {
       font-family: 'Montserrat', sans-serif;
       font-weight: 800;
-      font-size: 36px;
-      line-height: 1.2;
+      font-size: 30px;
+      line-height: 1.22;
       color: #fff;
     }
-    .closing-body { font-size: 16px; color: var(--text-dark-muted); line-height: 1.78; }
+    .closing-body { font-size: 15.5px; color: var(--text-dark-muted); line-height: 1.78; }
     .closing-risk {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
+      display: flex; gap: 18px; flex-wrap: wrap;
     }
     .closing-risk span {
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      font-size: 13px;
+      font-size: 13px; font-weight: 600;
       color: var(--text-dark-muted);
     }
     .closing-risk span::before { content: '✓ '; color: var(--amber); }
     @media (max-width: 768px) {
-      .closing { padding: var(--section-py-mob) 0; }
+      .closing { padding: 52px 0; }
       .closing-inner {
         display: flex; flex-direction: column;
         padding: 0 20px; gap: 32px;
       }
-      .closing-headline { font-size: 24px; }
-      .closing-image { width: 100%; }
+      .closing-h2 { font-size: 21px; }
     }
 
-    /* ────────────────────────────────────────────────────────
-       STICKY CTA BAR
-    ──────────────────────────────────────────────────────── */
+    /* ────────────────────────────────────────────────────
+       STICKY BAR
+    ──────────────────────────────────────────────────── */
     .sticky-bar {
       position: fixed;
-      bottom: 0; left: 0;
-      width: 100%;
+      bottom: 0; left: 0; width: 100%;
       z-index: 9999;
       background: var(--espresso);
       border-top: 2px solid var(--amber);
@@ -680,128 +659,94 @@
     .sticky-inner {
       max-width: var(--max-w);
       margin: 0 auto;
-      padding: 14px 40px;
+      padding: 13px 40px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
+      gap: 20px;
     }
-    .sticky-label {
-      font-size: 14px;
-      color: var(--text-dark-muted);
-      flex: 1;
-    }
+    .sticky-label { font-size: 13.5px; color: var(--text-dark-muted); flex: 1; }
     .sticky-price {
       font-family: 'Montserrat', sans-serif;
       font-weight: 800;
-      font-size: 22px;
+      font-size: 20px;
       color: #fff;
       white-space: nowrap;
-      flex-shrink: 0;
     }
-    .sticky-price s { color: #888; font-size: 14px; font-weight: 400; margin-right: 8px; }
-    .sticky-btn {
-      flex-shrink: 0;
-      padding: 14px 28px;
-      font-size: 15px;
-    }
+    .sticky-price s { color: #777; font-size: 13px; font-weight: 400; margin-right: 6px; }
+    .sticky-btn { flex-shrink: 0; padding: 12px 26px; font-size: 14.5px; }
     @media (max-width: 768px) {
       .sticky-inner {
         flex-direction: column;
-        padding: 12px 20px;
-        gap: 10px;
+        padding: 12px 20px; gap: 10px;
         align-items: stretch;
       }
       .sticky-label { display: none; }
-      .sticky-price { font-size: 19px; text-align: center; }
-      .sticky-btn { width: 100%; text-align: center; }
+      .sticky-price { font-size: 18px; text-align: center; }
+      .sticky-btn { width: 100%; text-align: center; font-size: 15px; }
     }
 
-    /* ────────────────────────────────────────────────────────
-       DIVIDER
-    ──────────────────────────────────────────────────────── */
-    .divider {
-      width: 48px; height: 3px;
-      background: var(--amber);
-      border-radius: 2px;
-      margin-bottom: 20px;
-    }
-    .divider-center { margin: 0 auto 20px; }
-
-    /* ────────────────────────────────────────────────────────
-       FOOTER
-    ──────────────────────────────────────────────────────── */
+    /* ── FOOTER ── */
     .footer {
       background: var(--espresso);
-      padding: 32px 40px;
+      padding: 28px 40px;
       text-align: center;
     }
-    .footer p {
-      font-size: 13px;
-      color: rgba(255,255,255,.35);
-      line-height: 1.7;
-    }
-    @media (max-width: 768px) {
-      .footer { padding: 28px 20px; }
-    }
+    .footer p { font-size: 12.5px; color: rgba(255,255,255,.3); line-height: 1.7; }
+    @media (max-width: 768px) { .footer { padding: 24px 20px; } }
   </style>
 </head>
 <body>
 
-  <!-- ══════════════════════════════════════════════════
-       STICKY CTA BAR
-  ═══════════════════════════════════════════════════ -->
+  <!-- STICKY BAR -->
   <div class="sticky-bar" id="stickyBar">
     <div class="sticky-inner">
-      <p class="sticky-label">Bahu kamu bisa lentur lagi dalam 21 hari — tanpa operasi, tanpa suntik</p>
+      <p class="sticky-label">Bahu kamu bisa lentur lagi dalam 21 hari. Tanpa operasi, tanpa suntik.</p>
       <div class="sticky-price"><s>Rp 297.000</s> Rp 127.000</div>
-      <a href="#pricing" class="btn-cta sticky-btn">Mulai Hari Ini →</a>
+      <a href="#pricing" class="btn-cta sticky-btn">Mulai Hari Ini</a>
     </div>
   </div>
 
 
-  <!-- ══════════════════════════════════════════════════
-       01. HERO
-  ═══════════════════════════════════════════════════ -->
+  <!-- ══ 01. HERO ════════════════════════════════════════ -->
   <section class="hero" id="hero">
 
-    <!-- DESKTOP: left text column -->
     <div class="hero-text">
-      <div class="hero-eyebrow reveal">✦ &nbsp;Metode KAITŌ (解凍) — Mencairkan yang Beku</div>
+      <div class="hero-eyebrow reveal">✦ &nbsp;Metode KAITŌ (解凍) · Mencairkan yang Beku</div>
 
-      <h1 class="hero-headline reveal reveal-d1">
-        Bahu kamu bukan <span class="accent">"pegel biasa"</span> — ini sedang proses terkunci, dan setiap hari yang kamu tunda makin susah dibalikin
+      <h1 class="hero-h1 reveal d1">
+        Bahu kamu sedang proses terkunci.<br>
+        <span class="amber">Semakin lama ditunggu, semakin susah baliknya.</span>
       </h1>
 
-      <!-- desktop sub + cta -->
-      <p class="hero-sub reveal reveal-d2">
-        Metode KAITŌ memulihkan bahu beku dalam 21 hari — dari rumah, tanpa operasi, tanpa suntik, cukup 10 menit sehari
+      <!-- desktop only -->
+      <p class="hero-sub reveal d2">
+        Metode KAITŌ memulihkan bahu beku dalam 21 hari. Dari rumah, tanpa operasi, tanpa suntik, cukup 10 menit sehari.
       </p>
-      <div class="hero-cta-wrap reveal reveal-d3">
-        <a href="#pricing" class="btn-cta">Saya Mau Mulai Cairkan Bahu Hari Ini →</a>
+      <div class="hero-cta-wrap reveal d3">
+        <a href="#pricing" class="btn-cta">Saya Mau Mulai Cairkan Bahu Hari Ini</a>
       </div>
-      <div class="hero-risk reveal reveal-d3">
+      <div class="hero-risk reveal d3">
         <span>Akses seumur hidup</span>
         <span>Tanpa biaya bulanan</span>
         <span>Pembayaran aman</span>
       </div>
     </div>
 
-    <!-- IMAGE column -->
-    <div class="hero-image-col reveal">
+    <div class="hero-img-col reveal">
       <img
         src="https://drive.google.com/thumbnail?id=1RQo7oQ8C5HuYasVNA955ck0gWsS2k641&sz=w1200"
-        alt="Wanita dengan bahu terangkat bebas — hasil metode KAITŌ"
+        alt="Wanita dengan bahu terangkat bebas setelah menggunakan metode KAITŌ"
         loading="eager"
       />
     </div>
 
-    <!-- MOBILE: sub-headline + cta rendered after image via hero-bottom -->
-    <div class="hero-bottom">
+    <!-- mobile: rendered after image -->
+    <div class="hero-mob-bottom">
       <p class="hero-sub">
-        Metode KAITŌ memulihkan bahu beku dalam 21 hari — dari rumah, tanpa operasi, tanpa suntik, cukup 10 menit sehari
+        Metode KAITŌ memulihkan bahu beku dalam 21 hari. Dari rumah, tanpa operasi, tanpa suntik, cukup 10 menit sehari.
       </p>
-      <a href="#pricing" class="btn-cta btn-full">Saya Mau Mulai Cairkan Bahu Hari Ini →</a>
+      <a href="#pricing" class="btn-cta full">Saya Mau Mulai Cairkan Bahu Hari Ini</a>
       <div class="hero-risk">
         <span>Akses seumur hidup</span>
         <span>Tanpa biaya bulanan</span>
@@ -812,22 +757,19 @@
   </section>
 
 
-  <!-- ══════════════════════════════════════════════════
-       02. AGITASI
-  ═══════════════════════════════════════════════════ -->
+  <!-- ══ 02. AGITASI ═════════════════════════════════════ -->
   <section class="agitasi">
     <div class="agitasi-inner">
       <div class="agitasi-body reveal">
-        <h2 class="agitasi-headline">Setiap hari yang kamu diamkan, jaringan di dalam bahumu makin lengket</h2>
-        <p>Frozen shoulder itu gak diam di tempat. Ia berproses. Kapsul sendi yang meradang sedang membentuk jaringan parut — dan semakin lama dibiarkan, <strong>semakin rapat jaringannya.</strong> Semakin susah dicairkan.</p>
-        <p>Banyak yang pikir "ntar juga sembuh sendiri." Dan itu memang bisa terjadi — frozen shoulder bisa sembuh sendiri. Tapi butuh <strong>1 sampai 3 tahun.</strong> Dan sering kali tidak sembuh 100%. Kekakuan residual tetap ada karena jaringan parut yang sudah terlanjur padat tidak pernah benar-benar diurai.</p>
-        <p>Yang bikin ini makin serius: <strong>penanganan yang salah justru mempercepat pembekuan.</strong> Diurut keras-keras supaya "terbuka"? Itu memperparah inflamasi. Takut bergerak dan imobilisasi total? Itu mempercepat fibrosis. Dua-duanya salah arah.</p>
-        <p>Kamu gak butuh operasi untuk mulai memperbaiki ini. Tapi kamu butuh cara yang benar — dan kamu butuh mulai sekarang.</p>
+        <h2 class="agitasi-h2">Setiap hari yang kamu diamkan, jaringan di bahumu makin lengket</h2>
+        <p>Frozen shoulder gak diam di tempat. Kapsul sendi yang meradang sedang membentuk jaringan parut, dan semakin lama dibiarkan semakin rapat jaringannya. <strong>Makin susah dicairkan.</strong></p>
+        <p>Banyak yang pikir "ntar juga sembuh sendiri." Bisa saja, tapi butuh <strong>1 sampai 3 tahun.</strong> Dan sering kali tidak sembuh 100% karena jaringan parut yang tidak pernah diurai dengan benar.</p>
+        <p>Yang bikin makin serius: <strong>penanganan yang salah justru mempercepat pembekuan.</strong> Diurut keras-keras? Memperparah inflamasi. Diam total? Mempercepat fibrosis. Dua-duanya salah arah.</p>
       </div>
-      <div class="agitasi-image reveal reveal-d2">
+      <div class="agitasi-image reveal d2">
         <img
           src="https://drive.google.com/thumbnail?id=1eed6NsmfFU4aa926gGQ98eOjMGSNlRPx&sz=w1000"
-          alt="Wanita yang mengalami nyeri bahu di malam hari"
+          alt="Nyeri bahu di malam hari"
           loading="lazy"
         />
       </div>
@@ -835,95 +777,72 @@
   </section>
 
 
-  <!-- ══════════════════════════════════════════════════
-       03. SOCIAL PROOF 1
-  ═══════════════════════════════════════════════════ -->
-  <section class="section proof-section">
-    <div class="container">
-      <div class="proof-card reveal">
-        <p class="proof-name">Ibu Sri, 52 Tahun — Surabaya</p>
-        <h3 class="proof-section-title">8 bulan tidak bisa sisiran bagian belakang kepala — berubah di minggu kedua</h3>
-        <p class="proof-body">
-          Awalnya saya pikir ini capek biasa dari kerjaan. Tapi lama-lama bahu kiri saya gak mau diangkat sama sekali. Tidur pun susah, sering kebangun tengah malam karena nyeri. Sudah ke dokter, disarankan fisioterapi — tapi biayanya gak kecil dan hasilnya belum kelihatan signifikan setelah 6 sesi. Waktu saya coba protokol ini, perubahan pertama yang saya rasakan adalah tidur saya mulai lebih nyenyak di hari ke-4. Di hari ke-14, saya bisa sisiran sampai bagian belakang kepala untuk pertama kalinya dalam 8 bulan. Bukan sembuh total — tapi progresnya nyata dan terukur.
-        </p>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════════════
-       04. FOR WHO
-  ═══════════════════════════════════════════════════ -->
+  <!-- ══ 03. FOR WHO ══════════════════════════════════════ -->
   <section class="section forwho">
     <div class="container">
-      <p class="section-label reveal">Apakah ini buat kamu?</p>
-      <h2 class="section-headline reveal reveal-d1">Ini tepat buat kamu kalau salah satu dari ini udah terasa</h2>
+      <p class="label reveal">Apakah ini buat kamu?</p>
+      <h2 class="section-h2 reveal d1">Ini buat kamu kalau salah satu dari ini terasa</h2>
       <ul class="forwho-list">
-        <li class="reveal"><span class="check">›</span>Bahu kamu kaku dan nyeri, paling parah di malam hari sampai susah tidur nyenyak</li>
-        <li class="reveal reveal-d1"><span class="check">›</span>Gerakan tertentu udah gak bisa — ngaitkan bra dari belakang, ambil barang di rak atas, sisiran bagian belakang kepala</li>
-        <li class="reveal reveal-d2"><span class="check">›</span>Sudah pernah diurut, rasanya enak sesaat — tapi 2 hari kemudian nyeri balik lagi, kadang lebih parah</li>
-        <li class="reveal reveal-d3"><span class="check">›</span>Dokter sudah menyebut kemungkinan operasi dan kamu belum siap, atau biayanya belum memungkinkan sekarang</li>
-        <li class="reveal reveal-d3"><span class="check">›</span>Kamu khawatir ini akan permanen kalau tidak segera ditangani dengan cara yang benar</li>
+        <li class="reveal"><span class="arrow">›</span>Bahu kaku dan nyeri, paling parah malam hari sampai susah tidur</li>
+        <li class="reveal d1"><span class="arrow">›</span>Gerakan tertentu sudah gak bisa: ngaitkan bra, ambil barang di rak atas, sisiran bagian belakang</li>
+        <li class="reveal d2"><span class="arrow">›</span>Sudah pernah diurut, enak sesaat tapi nyeri balik lagi dalam 2 hari</li>
+        <li class="reveal d2"><span class="arrow">›</span>Dokter sudah menyebut kemungkinan operasi tapi kamu belum siap atau belum bisa</li>
+        <li class="reveal d3"><span class="arrow">›</span>Khawatir ini akan permanen kalau tidak segera ditangani dengan cara yang benar</li>
       </ul>
     </div>
   </section>
 
 
-  <!-- ══════════════════════════════════════════════════
-       05. VALUE STACK
-  ═══════════════════════════════════════════════════ -->
-  <section class="section value-stack">
+  <!-- ══ 04. VALUE STACK ══════════════════════════════════ -->
+  <section class="section value">
     <div class="container">
-      <p class="section-label reveal">Apa yang kamu dapat</p>
-      <h2 class="section-headline reveal reveal-d1">Yang kamu dapat hari ini — lengkap, bisa langsung dipakai</h2>
-      <p class="value-sub reveal reveal-d2">Satu paket yang dirancang supaya kamu gak perlu cari-cari informasi lain di luar ini. Semua sudah ada, semua sudah berurutan.</p>
+      <p class="label reveal">Apa yang kamu dapat</p>
+      <h2 class="section-h2 reveal d1">Yang kamu dapat hari ini</h2>
+      <p class="value-sub reveal d2">Satu paket lengkap yang sudah berurutan. Gak perlu cari informasi lain di luar ini.</p>
 
       <div class="value-grid">
-        <!-- Main product -->
         <div class="product-main reveal">
           <img
-            class="product-main-img"
+            class="cover"
             src="https://drive.google.com/thumbnail?id=1qRo46_t2P-czGPfdf0oPLWoqN-mSuCcU&sz=w1200"
-            alt="Mockup 21 Hari Frozen Shoulder Kembali Lentur"
+            alt="Mockup paket 21 Hari Frozen Shoulder Kembali Lentur"
             loading="lazy"
           />
           <div class="product-main-body">
-            <span class="product-main-tag">Panduan Utama</span>
-            <h3 class="product-main-title">21 Hari Frozen Shoulder Kembali Lentur</h3>
-            <p class="product-main-desc">75 halaman. Program 3 minggu lengkap dengan protokol KAITŌ — dari meredakan nyeri malam di minggu pertama, membuka rentang gerak di minggu kedua, sampai mengunci progres di minggu ketiga. Setiap gerakan dijelaskan step-by-step dengan panduan intensitas yang aman.</p>
+            <span class="product-tag">Panduan Utama</span>
+            <h3 class="product-title">21 Hari Frozen Shoulder Kembali Lentur</h3>
+            <p class="product-desc">75 halaman. Program 3 minggu lengkap dengan protokol KAITŌ. Dari meredakan nyeri malam di minggu pertama, membuka rentang gerak di minggu kedua, sampai mengunci progres di minggu ketiga. Setiap gerakan dijelaskan step-by-step dengan panduan intensitas yang aman.</p>
           </div>
         </div>
 
-        <!-- Bonus stack -->
-        <div class="bonus-stack reveal reveal-d1">
+        <div class="bonus-stack reveal d1">
           <div class="bonus-card">
             <div class="bonus-num">B1</div>
-            <div class="bonus-info">
+            <div>
               <p class="bonus-title">Cheat Sheet Rutinitas Harian per Minggu</p>
               <p class="bonus-desc">Ringkasan satu halaman yang bisa ditempel di dinding. Semua yang perlu dilakukan setiap hari, urut, lengkap.</p>
             </div>
           </div>
           <div class="bonus-card">
             <div class="bonus-num">B2</div>
-            <div class="bonus-info">
+            <div>
               <p class="bonus-title">Kalender Tracking 21 Hari</p>
-              <p class="bonus-desc">Lembar tracking harian untuk catat skala nyeri, progres wall walk, dan catatan observasi. Progres jadi terukur, bukan cuma terasa.</p>
+              <p class="bonus-desc">Catat skala nyeri dan progres wall walk setiap hari. Progres jadi terukur, bukan cuma terasa.</p>
             </div>
           </div>
           <div class="bonus-card">
             <div class="bonus-num">B3</div>
-            <div class="bonus-info">
+            <div>
               <p class="bonus-title">Panduan Posisi Tidur Bergambar</p>
-              <p class="bonus-desc">Panduan bergambar posisi tidur yang aman dan yang harus dihindari. Karena 7-9 jam tidur lebih panjang dari total semua sesi latihan.</p>
+              <p class="bonus-desc">Posisi tidur yang aman dan yang harus dihindari. Karena 7-9 jam tidur lebih panjang dari total semua sesi latihan.</p>
             </div>
           </div>
 
-          <!-- Mini price teaser inside value stack -->
-          <div style="margin-top: 12px; padding: 24px; background: rgba(196,125,30,.12); border: 1px solid rgba(196,125,30,.25); border-radius: 12px; text-align: center;">
-            <p style="color: var(--text-dark-muted); font-size: 13px; margin-bottom: 8px;">Semua ini tersedia hari ini seharga</p>
-            <p style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 32px; color: var(--amber);">Rp 127.000</p>
-            <p style="color: #888; font-size: 13px; text-decoration: line-through;">Rp 297.000</p>
-            <a href="#pricing" class="btn-cta btn-full" style="margin-top: 16px; font-size: 15px; padding: 14px 20px;">Ambil Paket Ini →</a>
+          <div class="value-cta-box">
+            <p class="sub">Semua ini tersedia hari ini seharga</p>
+            <p class="price">Rp 127.000</p>
+            <p class="strike">Rp 297.000</p>
+            <a href="#pricing" class="btn-cta full" style="font-size: 14.5px; padding: 14px 20px;">Ambil Paket Ini</a>
           </div>
         </div>
       </div>
@@ -931,53 +850,35 @@
   </section>
 
 
-  <!-- ══════════════════════════════════════════════════
-       06. SOCIAL PROOF 2
-  ═══════════════════════════════════════════════════ -->
-  <section class="section proof-section">
-    <div class="container">
-      <div class="proof-card reveal">
-        <p class="proof-name">Ibu Dewi, 48 Tahun — Bandung</p>
-        <h3 class="proof-section-title">Dokter sudah sarankan operasi — saya tunda, coba ini dulu</h3>
-        <p class="proof-body">
-          Setelah fisioterapi 6 minggu tidak ada perubahan signifikan, dokter ortopedi saya menyarankan operasi arthroscopy. Biayanya besar dan saya takut prosedurnya. Saya tunda dulu dan coba protokol ini. Di minggu ketiga, waktu saya ulangi tes rotasi yang ada di panduan, hasilnya naik hampir 25 derajat dari kondisi awal. Nyeri malam sudah turun drastis. Sampai sekarang saya belum operasi dan kondisi bahu saya terus membaik pelan-pelan.
-        </p>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════════════
-       07. HOW IT WORKS
-  ═══════════════════════════════════════════════════ -->
+  <!-- ══ 05. HOW IT WORKS ═════════════════════════════════ -->
   <section class="section hiw">
     <div class="container">
-      <p class="section-label reveal">Cara kerjanya</p>
-      <h2 class="section-headline reveal reveal-d1">3 fase yang bekerja sesuai cara tubuh menyembuhkan dirinya sendiri</h2>
+      <p class="label reveal">Cara kerjanya</p>
+      <h2 class="section-h2 reveal d1">3 fase yang bekerja sesuai cara tubuh menyembuhkan diri</h2>
       <div class="hiw-grid">
 
-        <div class="fase-card reveal">
+        <div class="fase reveal">
           <div class="fase-num">01</div>
-          <span class="fase-tag">Minggu 1 — Hari 1-7</span>
-          <h3 class="fase-title">SHIZUME <em>鎮め</em><br/>Meredakan</h3>
-          <p class="fase-desc">Fokus: turunkan nyeri malam dan redakan inflamasi. Bukan dengan obat — tapi dengan heat priming dan pendulum exercise yang bekerja sesuai ritme alami tubuh. Sesi 10-12 menit, setiap hari, dari rumah.</p>
-          <p class="fase-win">→ Quick win: tidur lebih nyenyak di hari ke-3 s/d 5</p>
+          <span class="fase-badge">Minggu 1 · Hari 1-7</span>
+          <h3 class="fase-title">SHIZUME <em>鎮め</em><br>Meredakan</h3>
+          <p class="fase-desc">Heat priming dan pendulum exercise untuk redakan nyeri malam. Sesi 10-12 menit sehari, dari rumah, tanpa alat khusus.</p>
+          <p class="fase-win">Quick win: tidur lebih nyenyak mulai hari ke-3 sampai 5</p>
         </div>
 
-        <div class="fase-card reveal reveal-d1">
+        <div class="fase reveal d1">
           <div class="fase-num">02</div>
-          <span class="fase-tag">Minggu 2 — Hari 8-14</span>
-          <h3 class="fase-title">HIRAKU <em>開く</em><br/>Membuka</h3>
-          <p class="fase-desc">Fokus: buka rentang gerak secara terukur. Empat gerakan inti yang menargetkan bagian kapsul yang berbeda — dan marker wall walk harian yang bikin progresnya kelihatan, bukan cuma terasa.</p>
-          <p class="fase-win">→ Rata-rata wall walk naik 8-15 cm dari baseline</p>
+          <span class="fase-badge">Minggu 2 · Hari 8-14</span>
+          <h3 class="fase-title">HIRAKU <em>開く</em><br>Membuka</h3>
+          <p class="fase-desc">4 gerakan inti membuka rentang gerak secara terukur. Wall walk marker harian bikin progresnya kelihatan, bukan cuma terasa.</p>
+          <p class="fase-win">Rata-rata wall walk naik 8-15 cm dari kondisi awal</p>
         </div>
 
-        <div class="fase-card reveal reveal-d2">
+        <div class="fase reveal d2">
           <div class="fase-num">03</div>
-          <span class="fase-tag">Minggu 3 — Hari 15-21</span>
-          <h3 class="fase-title">MODOSU <em>戻す</em><br/>Mengembalikan</h3>
-          <p class="fase-desc">Fokus: kunci apa yang sudah dicapai, mulai bangun kekuatan. Stretching diperpanjang, penguatan ringan rotator cuff ditambahkan, dan re-assessment lengkap di Hari 21 — kamu bisa bandingkan sendiri kondisi awal vs sekarang.</p>
-          <p class="fase-win">→ Progres terukur: rotasi naik 15-25° dari awal</p>
+          <span class="fase-badge">Minggu 3 · Hari 15-21</span>
+          <h3 class="fase-title">MODOSU <em>戻す</em><br>Mengembalikan</h3>
+          <p class="fase-desc">Kunci progres dan mulai bangun kekuatan rotator cuff. Re-assessment di Hari 21 untuk compare kondisi awal vs sekarang.</p>
+          <p class="fase-win">Rata-rata rotasi eksternal naik 15-25 derajat</p>
         </div>
 
       </div>
@@ -985,43 +886,53 @@
   </section>
 
 
-  <!-- ══════════════════════════════════════════════════
-       08. SOCIAL PROOF 3
-  ═══════════════════════════════════════════════════ -->
-  <section class="section proof-section">
+  <!-- ══ 06. SOCIAL PROOF (semua setelah Cara Kerjanya) ══ -->
+  <section class="section proofs">
     <div class="container">
-      <div class="proof-card reveal">
-        <p class="proof-name">Ibu Rina, 55 Tahun — Jakarta</p>
-        <h3 class="proof-section-title">Nyeri malam turun dari skala 8 jadi 3 dalam 2 minggu</h3>
-        <p class="proof-body">
-          Sudah hampir setahun saya hidup dengan nyeri bahu kanan yang membangunkan saya 3 sampai 4 kali semalam. Sudah coba berbagai cara — dari balsem, urut, sampai suntik steroid yang memberikan lega sesaat tapi balik lagi dalam sebulan. Dua minggu setelah mulai protokol ini, skala nyeri malam saya turun dari 8 menjadi 3. Bukan karena keajaiban — tapi karena untuk pertama kalinya saya menangani kondisi ini dengan cara yang sesuai dengan mekanisme sebenarnya.
-        </p>
+      <p class="label reveal">Dari yang sudah mencoba</p>
+      <h2 class="section-h2 reveal d1">Yang mereka rasakan</h2>
+      <div class="proofs-grid">
+
+        <div class="proof-card reveal">
+          <p class="proof-name">Ibu Sri, 52 th · Surabaya</p>
+          <div class="proof-quote-mark">"</div>
+          <h3 class="proof-headline">8 bulan tidak bisa sisiran bagian belakang kepala</h3>
+          <p class="proof-body">Di hari ke-4, tidur saya mulai lebih nyenyak. Di hari ke-14, saya bisa sisiran sampai belakang kepala untuk pertama kalinya dalam 8 bulan. Progresnya nyata dan terukur.</p>
+        </div>
+
+        <div class="proof-card reveal d1">
+          <p class="proof-name">Ibu Dewi, 48 th · Bandung</p>
+          <div class="proof-quote-mark">"</div>
+          <h3 class="proof-headline">Dokter sudah sarankan operasi, saya tunda dulu</h3>
+          <p class="proof-body">Setelah 6 minggu fisioterapi tidak ada hasil, saya coba protokol ini. Di minggu ketiga rotasi naik hampir 25 derajat dari awal. Sampai sekarang saya belum perlu operasi.</p>
+        </div>
+
+        <div class="proof-card reveal d2">
+          <p class="proof-name">Ibu Rina, 55 th · Jakarta</p>
+          <div class="proof-quote-mark">"</div>
+          <h3 class="proof-headline">Nyeri malam turun dari skala 8 jadi 3</h3>
+          <p class="proof-body">Hampir setahun nyeri bahu membangunkan saya 3-4 kali semalam. Dua minggu pakai protokol ini, skala nyeri malam turun dari 8 jadi 3.</p>
+        </div>
+
       </div>
     </div>
   </section>
 
 
-  <!-- ══════════════════════════════════════════════════
-       09. PRICING
-  ═══════════════════════════════════════════════════ -->
+  <!-- ══ 07. PRICING ══════════════════════════════════════ -->
   <section class="section pricing" id="pricing">
     <div class="container">
       <div class="pricing-box">
-        <div class="divider divider-center reveal"></div>
-        <h2 class="pricing-headline reveal reveal-d1">Satu keputusan hari ini yang bisa mengubah kondisi bahumu dalam 21 hari</h2>
-        <p class="pricing-sub reveal reveal-d2">Sekali beli. Akses seumur hidup. Bisa mulai hari ini.</p>
-
-        <div class="price-block reveal reveal-d2">
-          <p class="price-strike">Rp 297.000</p>
-          <p class="price-active"><span>Rp&nbsp;</span>127.000</p>
-        </div>
-
-        <a href="#" class="btn-cta btn-full reveal reveal-d3" style="font-size: 18px; padding: 20px 32px;">
-          Saya Mau Mulai Cairkan Bahu Hari Ini →
+        <div class="divider center reveal"></div>
+        <h2 class="pricing-h2 reveal d1">Satu keputusan hari ini yang bisa ubah kondisi bahumu dalam 21 hari</h2>
+        <p class="pricing-sub reveal d2">Sekali beli. Akses seumur hidup. Bisa mulai hari ini.</p>
+        <p class="price-strike reveal d2">Rp 297.000</p>
+        <p class="price-active reveal d2"><span>Rp&nbsp;</span>127.000</p>
+        <a href="#" class="btn-cta full reveal d3" style="font-size: 17px; padding: 19px 32px;">
+          Saya Mau Mulai Cairkan Bahu Hari Ini
         </a>
-
-        <div class="risk-list reveal reveal-d3">
-          <p>Akses seumur hidup — sekali beli, milik kamu selamanya</p>
+        <div class="risk-box reveal d3">
+          <p>Akses seumur hidup, sekali beli milik kamu selamanya</p>
           <p>Tanpa biaya bulanan atau langganan apapun</p>
           <p>Bisa langsung diakses setelah pembayaran</p>
           <p>Pembayaran aman dan terlindungi</p>
@@ -1031,27 +942,23 @@
   </section>
 
 
-  <!-- ══════════════════════════════════════════════════
-       10. CLOSING
-  ═══════════════════════════════════════════════════ -->
+  <!-- ══ 08. CLOSING ══════════════════════════════════════ -->
   <section class="closing">
     <div class="closing-inner">
       <div class="closing-image reveal">
         <img
           src="https://drive.google.com/thumbnail?id=1xM0GnlLwk4_OTbwcVJc_OE7CB43v5UDB&sz=w1200"
-          alt="Kehidupan setelah bahu pulih — momen pagi hari yang tenang"
+          alt="Kehidupan setelah bahu pulih"
           loading="lazy"
         />
       </div>
-      <div class="closing-text reveal reveal-d1">
+      <div class="closing-text reveal d1">
         <div class="divider"></div>
-        <h2 class="closing-headline">Bahu kamu gak akan membaik sendiri dengan cara yang sudah kamu coba selama ini</h2>
-        <p class="closing-body">
-          Kalau urut keras bisa memperbaikinya, sudah membaik dari dulu. Kalau istirahat total bisa memperbaikinya, sudah sembuh dari dulu. Yang belum pernah kamu coba adalah pendekatan yang benar-benar sesuai dengan cara jaringan beku itu bekerja — lembut, konsisten, dan terstruktur.
-        </p>
+        <h2 class="closing-h2">Bahu kamu gak akan membaik dengan cara yang sudah kamu coba selama ini</h2>
+        <p class="closing-body">Kalau urut keras bisa memperbaikinya, sudah membaik dari dulu. Kalau istirahat total bisa, sudah sembuh dari dulu. Yang belum pernah kamu coba adalah pendekatan yang sesuai cara jaringan beku itu bekerja: lembut, konsisten, terstruktur.</p>
         <p class="closing-body">21 hari. 10 menit sehari. Mulai hari ini.</p>
-        <a href="#pricing" class="btn-cta" style="width: 100%; text-align: center; padding: 18px;">
-          Saya Mau Mulai Cairkan Bahu Hari Ini — Rp 127.000 →
+        <a href="#pricing" class="btn-cta full" style="text-align: center; padding: 18px;">
+          Saya Mau Mulai Cairkan Bahu Hari Ini — Rp 127.000
         </a>
         <div class="closing-risk">
           <span>Akses seumur hidup</span>
@@ -1063,80 +970,50 @@
   </section>
 
 
-  <!-- ══════════════════════════════════════════════════
-       FOOTER
-  ═══════════════════════════════════════════════════ -->
+  <!-- FOOTER -->
   <footer class="footer">
-    <p>© 2025 · 21 Hari Frozen Shoulder Kembali Lentur · Semua harga dalam Rupiah · Harga berlaku terbatas</p>
-    <p style="margin-top: 8px;">Program ini adalah panduan edukasi, bukan pengganti konsultasi medis. Selalu konsultasikan kondisimu dengan dokter atau fisioterapis sebelum memulai program latihan.</p>
+    <p>© 2025 · Semua harga dalam Rupiah</p>
+    <p style="margin-top: 6px;">Program ini adalah panduan edukasi, bukan pengganti konsultasi medis. Konsultasikan kondisimu dengan dokter sebelum memulai program latihan apapun.</p>
   </footer>
 
 
-  <!-- ══════════════════════════════════════════════════
-       SCRIPTS
-  ═══════════════════════════════════════════════════ -->
   <script>
-    /* ── REVEAL ON SCROLL ─────────────────────────────── */
-    const revealEls = document.querySelectorAll('.reveal');
-    const revealObs = new IntersectionObserver((entries) => {
+    /* REVEAL ON SCROLL */
+    const revEls = document.querySelectorAll('.reveal');
+    const ro = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    revealEls.forEach(el => revealObs.observe(el));
+    }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+    revEls.forEach(el => ro.observe(el));
 
-    /* ── STICKY BAR ───────────────────────────────────── */
+    /* STICKY BAR */
     const bar     = document.getElementById('stickyBar');
     const hero    = document.getElementById('hero');
     const pricing = document.getElementById('pricing');
 
-    const stickyObs = new IntersectionObserver((entries) => {
+    const so = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if (e.target === hero) {
-          // show bar when hero exits viewport, hide when it re-enters
           e.isIntersecting ? bar.classList.remove('visible') : bar.classList.add('visible');
         }
-        if (e.target === pricing) {
-          // hide bar when pricing section is visible (user sees the real CTA)
-          e.isIntersecting ? bar.classList.remove('visible') : null;
+        if (e.target === pricing && e.isIntersecting) {
+          bar.classList.remove('visible');
         }
       });
     }, { threshold: 0.1 });
+    so.observe(hero);
+    so.observe(pricing);
 
-    stickyObs.observe(hero);
-    stickyObs.observe(pricing);
-
-    /* ── SMOOTH SCROLL for all #anchor links ─────────── */
+    /* SMOOTH SCROLL */
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', e => {
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
       });
     });
 
-    /* ── PRICE POP when pricing enters viewport ───────── */
-    const priceEl = document.querySelector('.price-active');
-    if (priceEl) {
-      priceEl.style.opacity = '0';
-      const priceObs = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            priceEl.style.opacity = '1';
-            priceEl.classList.add('price-active');
-            priceObs.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.5 });
-      priceObs.observe(priceEl);
-    }
-
-    /* ── REDUCED MOTION ───────────────────────────────── */
+    /* REDUCED MOTION */
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      revealEls.forEach(el => el.classList.add('visible'));
-      document.querySelectorAll('.btn-cta').forEach(b => {
-        b.style.transition = 'none';
-      });
+      revEls.forEach(el => el.classList.add('visible'));
     }
   </script>
 
